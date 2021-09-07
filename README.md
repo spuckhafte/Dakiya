@@ -3,6 +3,7 @@
 2. Message privately
 3. Create a group chat
 4. Save contacts
+5. Theme based
 
 **IMPORTANT: This is finished, but is not the actual piece of work that was to be presented!**
 <br><br>
