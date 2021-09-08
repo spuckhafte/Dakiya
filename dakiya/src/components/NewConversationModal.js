@@ -12,8 +12,13 @@ export default function NewConversationModal({ closeModal }) {
     function handleSubmit(e){
         e.preventDefault()
 
-        createConversation(selectedContactIds)
-        closeModal()
+        if (selectedContactIds.length > 0) {
+            selectedContactIds = clearArray(selectedContactIds)
+            if (selectedContactIds.length > 0) {
+                createConversation(selectedContactIds)
+                closeModal()
+            }
+        }
     }
 
     function handleCheckboxChange(contactId) {
@@ -56,53 +61,28 @@ export default function NewConversationModal({ closeModal }) {
 }
 
 
-// function clearArray(data) {
-//     let i = 0
-//     while (i < data.length) {
-//         let el = data[i]
-//         let j = 0
-//         while (j < data.length) {
-//             let sort_el = data[j]
-//             if (el == sort_el && j > i) {
-//                 data.splice(j, 1)
-//             } else {
-//                 j++
-//             }
-//         }
-//         i++
-//     }
-//     return data
-// }
+function clearArray(data) {
+    let newArray = []
+    data.map(r => checkOccurance(r, data)%2 !== 0 ? newArray.push(r) : newArray)
+    let i = 0
+    while (i < newArray.length) {
+        let el = newArray[i]
+        let j = 0
+        while (j < newArray.length) {
+            let sort_el = newArray[j]
+            if (el == sort_el && j > i) {
+                newArray.splice(j, 1)
+            } else {
+                j++
+            }
+        }
+        i++
+    }
+    return newArray
+}
 
-// function finalSelectedIds(data) {
-//     const intialData = data
-//     const finalData = clearArray(data)
-
-//     let finalList = []
-
-//     let i = 0
-//     while (i <= finalData.length) {
-//         let checkElement = finalData[i]
-
-//         let j = 0
-//         let k = 0
-//         while (j <= intialData) {
-//             let element = intialData[j]
-
-//             if (checkElement == element) {
-//                 k ++
-//                 j++
-//                 continue
-//             } else {
-//                 j++
-//                 continue
-//             }
-//         }
-//         if (k%2!==0){
-//             finalList.push(checkElement)
-//         }
-//         i++
-//     }
-
-//     return finalList
-// }
+function checkOccurance(element, array) {
+    let count = 0
+    array.map(r => r == element ? count++ : count)
+    return count
+}
