@@ -10,10 +10,11 @@ export function useSocket() {
 export default function SocketProvider({ id, children }) {
 
     const [socket, setSocket] = useState()
+    const port = process.env.port||5000
     
     useEffect(() => {
         const newSocket = io(
-            'http://localhost:5000', 
+            `http://localhost:${port}`, 
             { query: { id } }
         )
 
