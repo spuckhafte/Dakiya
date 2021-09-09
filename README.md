@@ -11,5 +11,5 @@
 
 # Executing:
 1. **Install the dependencies** (*check package.json files from both the major folders and install respectively in correct folders*)
-2. **Open 2 terminals:** <br> *1st: cd dakiya : npm start* <br> *2nd: cd server : npm run devStart*
+2. **Open 2 terminals:** <br> ***1st**: cd dakiya : npm start* <br> ***2nd**: cd server : npm run devStart*
 3. **Program fill start automatically in the browser (if not then search *localhost:3000/*).**
